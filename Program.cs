@@ -1,19 +1,16 @@
-﻿using ConsoleApp4;
-using System;
-
-class Program
+﻿class Program
 {
-    static void Main()
+    static void Main(string[] args)
     {
-        Aluno aluno = new Aluno();
+        ContaBancaria conta = new ContaBancaria();
 
-        aluno.ReceberDados();
-        aluno.CalcularMedia();
-        aluno.CalcularNotaFinal();
-        aluno.ImprimirNotaFinal();
+        conta.ReceberDados();
+        conta.MostrarSaldo();
 
+        conta.Depositar();
+        conta.MostrarSaldo();
 
-
-
+        conta.Sacar();
+        conta.MostrarSaldo();
     }
 }
