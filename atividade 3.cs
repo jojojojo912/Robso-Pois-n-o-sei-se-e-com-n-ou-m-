@@ -1,34 +1,58 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31903.59
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "atividade 3.cs", "..\Nova pasta\atividade 3.cs\atividade 3.cs.csproj", "{E4338879-D2E8-45A1-AF8B-D42910F88712}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
-		Release|Any CPU = Release|Any CPU
-		Release|x64 = Release|x64
-		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E4338879-D2E8-45A1-AF8B-D42910F88712}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E4338879-D2E8-45A1-AF8B-D42910F88712}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E4338879-D2E8-45A1-AF8B-D42910F88712}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{E4338879-D2E8-45A1-AF8B-D42910F88712}.Debug|x64.Build.0 = Debug|Any CPU
-		{E4338879-D2E8-45A1-AF8B-D42910F88712}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{E4338879-D2E8-45A1-AF8B-D42910F88712}.Debug|x86.Build.0 = Debug|Any CPU
-		{E4338879-D2E8-45A1-AF8B-D42910F88712}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E4338879-D2E8-45A1-AF8B-D42910F88712}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E4338879-D2E8-45A1-AF8B-D42910F88712}.Release|x64.ActiveCfg = Release|Any CPU
-		{E4338879-D2E8-45A1-AF8B-D42910F88712}.Release|x64.Build.0 = Release|Any CPU
-		{E4338879-D2E8-45A1-AF8B-D42910F88712}.Release|x86.ActiveCfg = Release|Any CPU
-		{E4338879-D2E8-45A1-AF8B-D42910F88712}.Release|x86.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-EndGlobal
+using System;
+
+public class Produto
+{
+    public int CodigoProduto;
+    public string NomeProduto;
+    public double Preco;
+    public int QuantidadeEstoque;
+
+    public void ReceberDados()
+    {
+        Console.Write("Código do produto: ");
+        CodigoProduto = int.Parse(Console.ReadLine());
+        Console.Write("Nome do produto: ");
+        NomeProduto = Console.ReadLine();
+        Console.Write("Preço: ");
+        Preco = double.Parse(Console.ReadLine());
+        Console.Write("Quantidade inicial: ");
+        QuantidadeEstoque = int.Parse(Console.ReadLine());
+    }
+
+    public void AdicionarEstoque()
+    {
+        Console.Write("Quantidade a adicionar: ");
+        int qtd = int.Parse(Console.ReadLine());
+        QuantidadeEstoque += qtd;
+    }
+
+    public void RemoverEstoque()
+    {
+        Console.Write("Quantidade a remover: ");
+        int qtd = int.Parse(Console.ReadLine());
+        if (qtd <= QuantidadeEstoque)
+            QuantidadeEstoque -= qtd;
+        else
+            Console.WriteLine("Estoque insuficiente.");
+    }
+
+    public void MostrarProduto()
+    {
+        Console.WriteLine($"\n[Produto] Código: {CodigoProduto} | Nome: {NomeProduto} | Preço: R${Preco:F2} | Estoque: {QuantidadeEstoque}");
+    }
+}
+
+public class ProgramEx3
+{
+    public static void Main()
+    {
+        Produto p = new Produto();
+        p.ReceberDados();
+        p.MostrarProduto();
+        p.AdicionarEstoque();
+        p.MostrarProduto();
+        p.RemoverEstoque();
+        p.MostrarProduto();
+    }
+}
